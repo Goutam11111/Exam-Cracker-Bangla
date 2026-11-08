@@ -1,9 +1,11 @@
+
 name: Build Exam Cracker Bangla APK
 
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -11,7 +13,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,9 +26,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
       - name: Extract project ZIP
-        run: |
-          unzip -q Exam_Cracker_Bangla_Android_Project.zip
+        run: unzip -q Exam_Cracker_Bangla_Android_Project.zip
 
       - name: Build APK
         run: |
@@ -38,12 +43,15 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Exam-Cracker-Bangla-APK
-          path: Exam_Cracker_Bangla_Android_Project/app/build/outputs/apk/debug/app-debug.apkname: Build Exam Cracker Bangla APK
+          path: "Exam_Cracker_Bangla_Android_Project/app/build/outputs/apk/debug/app-debug.apk"
+
+name: Build Exam Cracker Bangla APK
 
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -51,7 +59,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -65,9 +72,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
       - name: Extract project ZIP
-        run: |
-          unzip -q Exam_Cracker_Bangla_Android_Project.zip
+        run: unzip -q Exam_Cracker_Bangla_Android_Project.zip
 
       - name: Build APK
         run: |
@@ -78,4 +89,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Exam-Cracker-Bangla-APK
-          path: Exam_Cracker_Bangla_Android_Project/app/build/outputs/apk/debug/app-debug.apk
+          path: "Exam_Cracker_Bangla_Android_Project/app/build/outputs/apk/debug/app-debug.apk"
